@@ -17,3 +17,9 @@ temp = (e*d)%phi_n
 while(temp != 1):
   d = d+1
   temp = (e*d)%phi_n
+# n et e = cle publique
+# d = cle prive
+######## Chiffrement ########
+m = 10
+x = pow(m, e)%n
+print x

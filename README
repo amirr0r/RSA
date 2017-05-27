@@ -5,6 +5,8 @@
 	- calcul de phi_n = (p-1)*(q-1)
 	- calcul d'un exposant e tel que pgcd(e, phi_n) = 1,  c'est dire qu'ils sont premiers entre eux
 	- calcul de d inverse de module (phi_n) par l'algorithme d'Euclide étendu : d * e ≡ 1 [phi_n] 
+2) Chiffrement du message :
+	- x = m^e [n]
 
 ----------------------------------------------------------------------------------------------------
 Liens utiles :
