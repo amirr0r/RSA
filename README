@@ -1,3 +1,12 @@
+Étapes : 
+1) Préparation des clefs :
+	- choix de deux nombres premiers distincts p et q
+ 	- calcul de n = p * q
+	- calcul de phi_n = (p-1)*(q-1)
+	- calcul d'un exposant e tel que pgcd(e, phi_n) = 1,  c'est dire qu'ils sont premiers entre eux
+	- calcul de d inverse de module (phi_n) par l'algorithme d'Euclide étendu : d * e ≡ 1 [phi_n] 
+
+----------------------------------------------------------------------------------------------------
 Liens utiles :
 - Pythonneries -> https://www.youtube.com/watch?v=swGl-iPmYic&list=PLXn2ckfYQjOcYMFdvJrt1Arg8C3OiVrA-
 - Openclassroom -> https://openclassrooms.com/courses/l-algorithme-rsa/crypter-et-decrypter
