@@ -7,6 +7,8 @@
 	- calcul de d inverse de module (phi_n) par l'algorithme d'Euclide étendu : d * e ≡ 1 [phi_n] 
 2) Chiffrement du message :
 	- x = m^e [n]
+3) Déchiffrement du message :
+	- m = x^d [n]
 
 ----------------------------------------------------------------------------------------------------
 Liens utiles :

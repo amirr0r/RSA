@@ -23,3 +23,6 @@ while(temp != 1):
 m = 10
 x = pow(m, e)%n
 print x
+######## Dechiffrement ########
+m = pow(x, d)%n
+print m
