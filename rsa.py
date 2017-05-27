@@ -9,4 +9,11 @@ while p == q:
   q = liste[r.randrange(len(liste))]
 n = p * q
 phi_n = (p-1)*(q-1)
-######## Preparation des clefs ########
+######## Choix d'un exposant e et calcul de son inverse d ########
+e = r.choice(liste)
+print pgcd(e, phi_n)
+d = 1 
+temp = (e*d)%phi_n
+while(temp != 1):
+  d = d+1
+  temp = (e*d)%phi_n
