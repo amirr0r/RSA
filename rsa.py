@@ -34,11 +34,7 @@ def euclide_etendu(e, phi_n) :
   return d
 # Chiffrement du message
 def chiffrer(message_ascii, e, n):
-  i = 0
-  message_chiffre = ""
-  while i != len(message_ascii) :
-    message_chiffre = message_chiffre + str(pow(int(message_ascii[i]), e)%n)
-    i = i + 1
+  message_chiffre = str(pow(int(message_ascii), e)%n)
   return message_chiffre
 ######## Menu ########
 choix = input('Salut a toi utilisateur, dis moi ce que je dois faire : \n1.Chiffrer\n2.Dechiffrer\nEntre une option du menu : ')
@@ -63,3 +59,10 @@ if choix==1:
   print "Cle publique :", e, "\nModulo :", n,"\nCle prive :", d
   # n et e = cle publique, d = cle prive
   print "\nEt voila le travail :\n", chiffrer(message_ascii, e, n)
+######## Dechiffrement ########
+else:
+  message = raw_input('\nOk, saisis le message que tu veux dechiffrer : ')
+  d = input('Super, maintenant la cle prive : ')
+  n = input('Enfin le modulo : ')
+  message = chiffrer(message, d, n)
+  print "\nEt voila le travail :\n", message
