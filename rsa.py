@@ -1,6 +1,15 @@
 from list import liste
 import random
 
+# Conversion message equivalent ascii
+def convert_ascii(message) :
+  i = 0
+  message_ascii = ""
+  while i != len(message):
+    c = ord(message[i])
+    message_ascii = message_ascii + str(c)
+    i = i + 1
+  return message_ascii
 ######## Generation de p et q ########
 r = random.SystemRandom()
 p =liste[r.randrange(len(liste))]
