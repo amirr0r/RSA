@@ -24,6 +24,22 @@ def convert_ascii(message) :
     message_ascii = message_ascii + str(c)
     i = i + 1
   return [bigger, message_ascii]
+# Algorithme d'Euclide etendu
+def euclide_etendu(e, phi_n) :
+  d = 1 
+  temp = (e*d)%phi_n
+  while(temp != 1):
+    d = d+1
+    temp = (e*d)%phi_n
+  return d
+# Chiffrement du message
+def chiffrer(message_ascii, e, n):
+  i = 0
+  message_chiffre = ""
+  while i != len(message_ascii) :
+    message_chiffre = message_chiffre + str(pow(int(message_ascii[i]), e)%n)
+    i = i + 1
+  return message_chiffre
 ######## Menu ########
 choix = input('Salut a toi utilisateur, dis moi ce que je dois faire : \n1.Chiffrer\n2.Dechiffrer\nEntre une option du menu : ')
 while choix != 1 and choix != 2 :
@@ -41,21 +57,9 @@ if choix==1:
   q = nbPremierDiff(p)
   n = p * q
   phi_n = (p-1)*(q-1)
-  #print p, " ", q, " ", n, " ", phi_n
   ######## Choix d'un exposant e et calcul de son inverse d ########
   e = r.choice(liste)
-  d = 1 
-  temp = (e*d)%phi_n
-  while(temp != 1):
-    d = d+1
-    temp = (e*d)%phi_n
-  #print e, " ", d, " "
+  d = euclide_etendu(e, phi_n)
   print "Cle publique :", e, "\nModulo :", n,"\nCle prive :", d
-  # n et e = cle publique
-  # d = cle prive
-  i = 0
-  message_chiffre = ""
-  while i != len(message_ascii) :
-    message_chiffre = message_chiffre + str(pow(int(message_ascii[i]), e)%n)
-    i = i + 1
-  print "\nEt voila le travail :\n", message_chiffre
+  # n et e = cle publique, d = cle prive
+  print "\nEt voila le travail :\n", chiffrer(message_ascii, e, n)
