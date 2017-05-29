@@ -26,7 +26,7 @@ def chiffrer(message, e, n):
   message_chiffre = ""
   while i != len(message):
     bloc = str(pow(ord(message[i]), e)%n)
-    print bloc
+    #print bloc
     while (len(bloc) != 6):
       bloc = "0" + bloc
     message_chiffre = message_chiffre + bloc
@@ -40,7 +40,7 @@ def dechiffrer(message_chiffre, d, n):
   while i != len(message):
     bloc = bloc + message[i]
     if (len(bloc)==6):
-      print bloc
+      #print bloc
       bloc = pow(int(bloc), d)%n
       message_dechiffre = message_dechiffre + chr(bloc)
       bloc = ""
