@@ -12,18 +12,6 @@ def pgcd(a,b) :
    while a%b != 0 : 
       a, b = b, a%b 
    return b
-# Conversion message equivalent ascii
-def convert_ascii(message) :
-  i = 0
-  message_ascii = ""
-  bigger = 0
-  while i != len(message):
-    c = ord(message[i])
-    if c > bigger :
-      bigger = c
-    message_ascii = message_ascii + str(c)
-    i = i + 1
-  return [bigger, message_ascii]
 # Algorithme d'Euclide etendu
 def euclide_etendu(e, phi_n) :
   d = 1 
@@ -33,9 +21,31 @@ def euclide_etendu(e, phi_n) :
     temp = (e*d)%phi_n
   return d
 # Chiffrement du message
-def chiffrer(message_ascii, e, n):
-  message_chiffre = str(pow(int(message_ascii), e)%n)
+def chiffrer(message, e, n):
+  i=0
+  message_chiffre = ""
+  while i != len(message):
+    bloc = str(pow(ord(message[i]), e)%n)
+    #print bloc
+    if (len(bloc) == 5):
+      bloc = "0" + bloc
+    message_chiffre = message_chiffre + bloc
+    i = i + 1
   return message_chiffre
+# Dechiffrement du message  
+def dechiffrer(message_chiffre, d, n):
+  i=0
+  bloc=""
+  message_dechiffre = ""
+  while i != len(message):
+    bloc = bloc + message[i]
+    if (i != 0 and i%5==0):
+      bloc = pow(int(bloc), d)%n
+      #print bloc
+      message_dechiffre = message_dechiffre + chr(bloc)
+      bloc = ""
+    i = i + 1
+  return message_dechiffre
 ######## Menu ########
 choix = input('Salut a toi utilisateur, dis moi ce que je dois faire : \n1.Chiffrer\n2.Dechiffrer\nEntre une option du menu : ')
 while choix != 1 and choix != 2 :
@@ -43,9 +53,6 @@ while choix != 1 and choix != 2 :
 ######## Chiffrement ########
 if choix==1:
   message = raw_input('\nOk, saisis le message que tu veux chiffrer : ')
-  mm = convert_ascii(message)
-  bigger = mm[0]
-  message_ascii = mm[1]
   print "\n...\n"
   ####### Generation de p et q ########
   r = random.SystemRandom()
@@ -58,11 +65,11 @@ if choix==1:
   d = euclide_etendu(e, phi_n)
   print "Cle publique :", e, "\nModulo :", n,"\nCle prive :", d
   # n et e = cle publique, d = cle prive
-  print "\nEt voila le travail :\n", chiffrer(message_ascii, e, n)
+  print "\nEt voila le travail :\n", chiffrer(message, e, n)
 ######## Dechiffrement ########
 else:
   message = raw_input('\nOk, saisis le message que tu veux dechiffrer : ')
   d = input('Super, maintenant la cle prive : ')
   n = input('Enfin le modulo : ')
-  message = chiffrer(message, d, n)
+  message = dechiffrer(message, d, n)
   print "\nEt voila le travail :\n", message
